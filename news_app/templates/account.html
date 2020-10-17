@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="content-section">
+        <img class="rounded-circle" src="static/default.jpg" alt="">
+        <div>
+            <h2>{{current_user.username}}</h2>
+            <p>{{current_user.email}}</p>
+        </div>
+    </div>
+    <h2>{{current_user.username}}</h2>
+
+{% endblock %}

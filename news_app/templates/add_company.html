@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Add new company</h2>
+<div>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{form.name.label}}
+            {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.name(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.base_url.label}}
+            {% if form.base_url.errors %}
+                {{ form.base_url(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.base_url.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.base_url(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.html_element.label}}
+            {% if form.html_element.errors %}
+                {{ form.html_element(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.html_element.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.html_element(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.element_class.label}}
+            {% if form.element_class.errors %}
+                {{ form.element_class(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.element_class.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.element_class(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.html_label.label}}
+            {% if form.html_label.errors %}
+                {{ form.html_label(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.html_label.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.html_label(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.label_class.label}}
+            {% if form.label_class.errors %}
+                {{ form.label_class(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.label_class.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.label_class(class="form-control form-control-lg")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

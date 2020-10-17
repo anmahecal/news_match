@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <a class="btn btn-outline-info mb-4" href="{{url_for('get_all_news')}}">Get news</a>
+    {% endif %}
+    <h1>{{title}}</h1>
+    {% for company in companies %}
+        <section class='card-list'>
+            {% for new in news.items %}
+                {% if new.company_id == company.id %}
+                    <article class='card'>
+                        <header class='card-header'>
+                            <p>{{new.posted_at.strftime('%d-%m-%Y')}}</p>
+                            <span class="margin-left-10">{{new.relevance}}</span>
+                            <h6>{{new.category}}</h6>
+                            <p>{{new.title}}</p>
+                            {% if new.url %}
+                                <span><a href='#'>Ver noticia{{new.url}}</a></span>
+                            {% endif %}
+                            <h6>{{company.name}}</h6>
+                        </header>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </section>
+    {% endfor %}
+    {% for page in news.iter_pages() %}
+        {% if page %}
+            {% if page == news.page %}
+                <a class="btn btn-info mb-4" href="{{url_for('home', page=page)}}">{{page}}</a>
+            {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{url_for('home', page=page)}}">{{page}}</a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
